@@ -10,21 +10,21 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const mysql = require('mysql');
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
   host: conf.host,
   user: conf.user,
   password: conf.password,
   port: conf.port,
   database: conf.database
 });
-connection.connect();
+db.connect();
 
 const multer = require('multer');
 const upload = multer({dest: './upload'})
 
 app.get('/api/customers', (req, res) => {
-    connection.query(
-      "SELECT * FROM CUSTOMER", 
+    db.query(
+      "SELECT * FROM CUSTOMER WHERE isDeleted = 0", 
       (err, rows, fields) => {
         if (err) throw err;
           res.send(rows);
@@ -35,18 +35,29 @@ app.get('/api/customers', (req, res) => {
 app.use('/image', express.static('./upload'));
 
 app.post('/api/customers', upload.single('image'), (req, res) => {
-  let sql = 'INSERT INTO CUSTOMER VALUES (null, ?, ?, ?, ?, ?)';
+  let sql = 'INSERT INTO CUSTOMER VALUES (null, ?, ?, ?, ?, ?, NOW(),0)';
   let image = `/image/${req.file.filename}`;
   let name = req.body.name;
   let birthday = req.body.birthday;
   let gender = req.body.gender;
   let job = req.body.job;
   let params = [image, name, birthday, gender, job];
-  connection.query(sql, params,
+  db.query(sql, params,
     (err, rows, fields) => {
       if (err) throw err;
       res.send(rows);
     }
+  );
+});
+
+app.delete('/api/customers/:id', (req, res) => {
+  let sql = 'UPDATE CUSTOMER SET isDeleted = 1 WHERE id = ?';
+  let param = [req.params.id];
+  db.query(sql, param,
+      (err, rows, fields) => {
+        if (err) throw err;
+        res.send(rows);
+      }
   );
 });
 
