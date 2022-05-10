@@ -5,7 +5,7 @@
 2022.05.03 ~ 2022.05.08
 
 ## 프로젝트 설치
-<pre><code>git clone https://github.com/MinsungKimDev/example_test.git> 명령어를 입력하여 레포지토리를 클론 한 후 다음을 수행합니다.</code></pre>
+<pre><code>git clone https://github.com/MinsungKimDev/example_test.git 명령어를 입력하여 레포지토리를 클론 한 후 다음을 수행합니다.</code></pre>
 
 <pre><code>cd example_test></code></pre>
 
