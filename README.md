@@ -5,16 +5,24 @@
 2022.05.03 ~ 2022.05.08
 
 ## 프로젝트 설치
-<pre><code>git clone https://github.com/MinsungKimDev/example_test.git 명령어를 입력하여 레포지토리를 클론 한 후 다음을 수행합니다.</code></pre>
+1. 레포지토리 클론
+<pre><code>git clone https://github.com/MinsungKimDev/example_test.git</code></pre>
 
-<pre><code>cd example_test></code></pre>
+2. 프로젝트 디렉토리로 이동
+<pre><code>cd example_test</code></pre>
 
+3. 서버 모듈 설치
 <pre><code>npm i</code></pre>
 
+4. 클라이언트 디렉토리로 이동
 <pre><code>cd client</code></pre>
 
+5. 클라이언트 모듈 설치
 <pre><code>npm i --legacy-peer-deps</code></pre>
 
 ## 프로젝트 실행
+1. 프로젝트 디렉토리로 이동
+<pre><code>cd example-test</code></pre>
 
-프로젝트를 실행하려면 <pre><code>example-test</code></pre> 디렉토리에서 터미널을 열어 <pre><code>yarn dev</code></pre> 를 입력합니다.
+2. 시작 명령어 입력
+<pre><code>yarn dev</code></pre>
