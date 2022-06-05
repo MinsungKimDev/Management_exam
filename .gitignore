@@ -5,6 +5,7 @@
 
 # database
 /database.json
+customer.sql
 
 # dependencies
 /note
